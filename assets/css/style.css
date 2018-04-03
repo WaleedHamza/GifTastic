@@ -1,0 +1,49 @@
+body{
+    background:linear-gradient(to bottom right, rgb(7, 40, 55), rgb(91, 97, 106))no-repeat center fixed;
+}
+
+#giphy-form {
+    top :0;
+    width: 80%;
+    background-color: black;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+
+#buttons{
+    background: rgba(88, 88, 88);
+    width: 500px;
+    height: 100px;
+    width: 80%;
+    padding: 20px;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+#results{
+    width: 80%;
+    bottom:0;
+    background:linear-gradient(to top left, rgb(79, 82, 84), rgb(8, 13, 21))no-repeat center fixed;    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+p{
+    color: antiquewhite;
+    text-align: center
+}
+
+img{
+    border: 2px solid rgba(255, 0, 0, 0.358);
+    margin: 0 auto;
+    position: relative;
+}
+
+.item{
+    margin: 5px;
+    text-align: center;
+    float: left;
+    position: relative;
+}
