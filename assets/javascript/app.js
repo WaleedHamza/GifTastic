@@ -1,9 +1,9 @@
 
 var topics = ["Cats", "Dogs", "Funny", "Computers", "Fish"];
 var input = $("#searchInput").val().trim();
-var topics2 = [];
 
 //=========Render Buttons ==================//
+
 function renderButtons(newTopic) {
     // console.log( "I am rendering")
     if (typeof newTopic === "undefined") {
@@ -15,8 +15,6 @@ function renderButtons(newTopic) {
         // console.log("this")
       topics.push(newTopic)
       $("#buttons").append(`<button data-val=${newTopic}>${newTopic}</button>`)
-    
-      
     }
 }
 
@@ -32,8 +30,8 @@ $("#search").on("click", function(event){
 });
 
 renderButtons();
- //=========Error handler ==================//
 
+ //=========Error handler ==================//
 
 $("#search").click( function(event){
   event.preventDefault()
@@ -54,9 +52,9 @@ $("#search").click( function(event){
   if (!(topics.indexOf(input) > -1)){
           topics.push(input);
   }
-
-//   console.log(topics);
- //=========API queries ==================//
+  console.log(topics);
+ 
+  //=========API queries ==================//
 
 var giphsAmount = $("#numOfOutPut")
     .val()
@@ -87,10 +85,11 @@ $.ajax({
             gifDiv.prepend(p);
             gifDiv.prepend(giphy);
             $("#results").prepend(gifDiv);
-
         }
     })
 });
+
+  //=========Giphs state handler==================//
 
            $(document).on("click", ".image", function(){
             // console.log( "I have been clicked")
