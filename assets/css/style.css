@@ -24,8 +24,10 @@ body{
 #results{
     width: 80%;
     bottom:0;
-    background:linear-gradient(to top left, rgb(79, 82, 84), rgb(8, 13, 21))no-repeat center fixed;    margin: 0 auto;
+    background:linear-gradient(to top left,  rgb(8, 13, 21),rgb(79, 82, 84))no-repeat center fixed;    
+    margin: 0 auto;
     padding: 20px;
+    margin-top:10px;
     text-align: center;
     overflow: hidden;
 }

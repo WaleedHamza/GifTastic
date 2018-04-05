@@ -2,24 +2,33 @@
 var topics = ["Cats", "Dogs", "Funny", "Computers", "Fish"];
 var input = $("#searchInput").val().trim();
 var topics2 = [];
+
 //=========Render Buttons ==================//
-function renderButtons() {
-  topics.forEach(function(topic) {
-    $("#buttons").append(
-      `<button data-val=${topic}>${topic}</button>`
-    )
-  })
+function renderButtons(newTopic) {
+    // console.log( "I am rendering")
+    if (typeof newTopic === "undefined") {
+        topics.forEach(function (topic) {
+            $("#buttons").append(`<button data-val=${topic}>${topic}</button>`)
+
+        })
+    } else { 
+        // console.log("this")
+      topics.push(newTopic)
+      $("#buttons").append(`<button data-val=${newTopic}>${newTopic}</button>`)
+    
+      
+    }
 }
 
 $("#search").on("click", function(event){
   event.preventDefault();
   $("#results").empty();
-  var formValue = $("#serachInput").val();
-  $("#serachInput").val("");
+  var formValue = $("#searchInput").val().trim();
+  $("#searchInput").val();
   if (!(topics.indexOf(formValue) > -1)){
-    topics.push(formValue);
+    // console.log(formValue);
+    renderButtons(formValue);
   }
-  
 });
 
 renderButtons();
@@ -46,7 +55,7 @@ $("#search").click( function(event){
           topics.push(input);
   }
 
-  console.log(topics);
+//   console.log(topics);
  //=========API queries ==================//
 
 var giphsAmount = $("#numOfOutPut")
@@ -60,9 +69,9 @@ $.ajax({
     url: queryURL, 
     method: "GET"
   }).then(function (response) {
-        console.log(response)
+        // console.log(response)
 
-        // var stillImage = response.data.images.fixed_width_still.url;
+
         $("#results").empty();
         var result = response.data;
         for (var i = 0; i < result.length; i++) {
@@ -71,7 +80,10 @@ $.ajax({
             var p = $("<p>").text("Rating: " + rating);
             var giphy = $("<img>");
             giphy.attr("src", result[i].images.fixed_width_still.url);
-
+            giphy.attr("data-still",result[i].images.fixed_width_still.url)
+            giphy.attr("data-animate",result[i].images.fixed_width.url)
+            giphy.attr("data-state", "still")
+            giphy.addClass("image");
             gifDiv.prepend(p);
             gifDiv.prepend(giphy);
             $("#results").prepend(gifDiv);
@@ -79,3 +91,18 @@ $.ajax({
         }
     })
 });
+
+           $(document).on("click", ".image", function(){
+            // console.log( "I have been clicked")
+            var currentState = $(this).attr("data-state");
+            if (currentState === "still"){
+               $(this).attr("src", $(this).attr("data-animate"))
+               $(this).attr("data-state", "animate")
+            }else{
+                $(this).attr("src", $(this).attr("data-still"))
+                $(this).attr("data-state", "still")
+            }
+
+            })
+
+
