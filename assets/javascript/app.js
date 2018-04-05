@@ -9,7 +9,6 @@ function renderButtons(newTopic) {
     if (typeof newTopic === "undefined") {
         topics.forEach(function (topic) {
             $("#buttons").append(`<button data-val=${topic}>${topic}</button>`)
-
         })
     } else { 
         // console.log("this")
@@ -75,14 +74,18 @@ $.ajax({
         for (var i = 0; i < result.length; i++) {
             var gifDiv = $("<div class='item'>");
             var rating = result[i].rating;
-            var p = $("<p>").text("Rating: " + rating);
+            var r = $("<p>").text("Rated: " + rating);
+            r.addClass("rated")
+            var f = $("<button>").text("Add to favorites");
+            f.addClass("favBtn")
             var giphy = $("<img>");
             giphy.attr("src", result[i].images.fixed_width_still.url);
             giphy.attr("data-still",result[i].images.fixed_width_still.url)
             giphy.attr("data-animate",result[i].images.fixed_width.url)
             giphy.attr("data-state", "still")
             giphy.addClass("image");
-            gifDiv.prepend(p);
+            gifDiv.prepend(r);
+            gifDiv.prepend(f);
             gifDiv.prepend(giphy);
             $("#results").prepend(gifDiv);
         }

@@ -18,6 +18,7 @@ body{
     width: 80%;
     padding: 20px;
     margin: 0 auto;
+    margin-top: 10px;
     overflow: auto;
 }
 
@@ -38,14 +39,53 @@ p{
 }
 
 img{
-    border: 2px solid rgba(255, 0, 0, 0.358);
+    border: 2px solid rgba(0, 0, 0, 0.358);
+    border-radius: 10px;
     margin: 0 auto;
     position: relative;
+    box-shadow: 5px 5px 5px black
 }
 
+.image:hover:after{
+    content:'';
+    position:absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: url('http://i.stack.imgur.com/P1ELC.png') center no-repeat;
+    background-size: 50px;
+    
+}
+.image:hover img{opacity: 0.4;}
+
 .item{
+    padding:10px;
     margin: 5px;
     text-align: center;
     float: left;
     position: relative;
+    background-color: rgba(0, 0, 0, 0.468);
+    border: 1px solid rgba(0, 0, 0, 0.468);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black
+}
+
+.favBtn, .rated{
+    position: relative;
+    color: goldenrod;
+    display:flex;
+    justify-content: center;
+    width:90%;
+    margin:0 auto;
+    margin-top: 15px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.468);
+    border: 1px solid rgba(0, 0, 0, 0.468);
+    border-radius: 10px;
+}
+
+
+#favDiv{
+    display:hidden;
 }
