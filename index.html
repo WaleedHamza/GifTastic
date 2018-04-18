@@ -9,15 +9,17 @@
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
             <link rel="shortcut icon" href="assets/images/Giphy-icon.png" type="image/png">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
         <title>Giphtastic</title>
     </head>
     <body>
-       
+
        <div class="jumbotron">
        </div>
-              
-              
+
+
         <form id="giphy-form" class="row">
             <button id="search" type="submit" value="AddGiphy" class="col-sm-2">Search</button>
             <input type="text" id="searchInput" class="col-sm-4">
@@ -31,11 +33,15 @@
         <!-- buttons will go here -->
         <div id="buttons"></div>
         <!-- Giphies will Go here -->
-        <div id="results"></div>
+        <div id="results" class="grid"></div>
         <!-- Favorits will Go here -->
         <div id="favDiv"></div>
-
+<div>
+        <footer>
+            &copy;2018 Waleed Hamza
+        </footer>
+    </div>
         <script src="assets/javascript/app.js"></script>
-
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
     </body>
 </html>

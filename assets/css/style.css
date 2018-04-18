@@ -1,79 +1,79 @@
-body{
-    background:linear-gradient(to bottom right, rgb(7, 40, 55), rgb(91, 97, 106))no-repeat center fixed;
+body {
+    background: linear-gradient(to bottom right, rgb(7, 40, 55), rgb(91, 97, 106))no-repeat center fixed;
 }
 
-.jumbotron{
-    width:80%;
+.jumbotron {
+    width: 100%;
     margin-bottom: 10px;
-    margin: 10px 10% 10px 10%;
     background-color: rgb(23,23,25);
-    background-image:url("https://fortunedotcom.files.wordpress.com/2016/02/giphy-3.gif");
+    background-image: url("https://fortunedotcom.files.wordpress.com/2016/02/giphy-3.gif");
     background-size: cover;
     background-size: contain;
     background-position: center;
-    background-repeat: no-repeat;   
+    background-repeat: no-repeat;
 }
 
 #giphy-form {
-    top :0;
+    top: 0;
     width: 80%;
     background-color: rgb(23,23,25);
     padding: 10px;
     margin: 0 auto;
 }
 
-
-#buttons{
+#buttons {
     background: rgba(88, 88, 88);
     width: 500px;
     height: 100px;
     width: 80%;
     padding: 20px;
-    margin: 0 auto;
-    margin-top: 10px;
+    margin: 10px auto 0;
     overflow: auto;
 }
 
-#results{
+#results {
     width: 80%;
-    bottom:0;
-    background:linear-gradient(to top left,  rgb(8, 13, 21),rgb(79, 82, 84))no-repeat center fixed;    
+    height: 900%;
+    bottom: 80px;
+    background: linear-gradient(to top left, rgb(8, 13, 21),rgb(79, 82, 84))no-repeat center fixed;
     margin: 0 auto;
     padding: 20px;
-    margin-top:10px;
+    margin-top: 10px;
     text-align: center;
     overflow: hidden;
-   
+
 }
 
-p{
+p {
     color: antiquewhite;
-    text-align: center
+    text-align: center;
 }
 
-img{
+img {
     border: 2px solid rgba(0, 0, 0, 0.358);
     border-radius: 10px;
     margin: 0 auto;
     position: relative;
-    box-shadow: 5px 5px 5px black
+    box-shadow: 5px 5px 5px black;
 }
 
-.image:hover:after{
-    content:'';
-    position:absolute;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
+.image:hover:after {
+    /* content: ''; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
     width: 100%;
-    background: url('http://i.stack.imgur.com/P1ELC.png') center no-repeat;
+    background: url("http://i.stack.imgur.com/P1ELC.png") center no-repeat;
     background-size: 50px;
-    
-}
-.image:hover img{opacity: 0.4;}
 
-.item{
-    padding:10px;
+}
+.item:hover {
+    box-shadow: 3px -2px 2px -4px goldenrod;
+}
+
+.item {
+    padding: 10px;
     margin: 5px;
     text-align: center;
     float: left;
@@ -82,24 +82,42 @@ img{
     border: 1px solid rgba(0, 0, 0, 0.468);
     border-radius: 10px;
     box-shadow: 5px 5px 5px black;
+    transition: 400ms;
+
 }
 
-.favBtn, .rated{
+.favBtn,
+.rated {
     clear: both;
     position: relative;
     color: goldenrod;
-    display:flex;
+    display: flex;
     justify-content: center;
-    width:90%;
-    margin:0 auto;
-    margin-top: 15px;
+    width: 90%;
+    margin: 15px auto 0;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.468);
     border: 1px solid rgba(0, 0, 0, 0.468);
     border-radius: 10px;
 }
+.favBtn:hover,
+.rated:hover {
+    border: 1px solid goldenrod;
+}
 
+#favDiv {
+    display: none;
+}
 
-#favDiv{
-    display:hidden;
+footer {
+    width: 100%;
+    height: 40px;
+    padding: 40px;
+    margin-top: 20px;
+    background-color: rgb(23,23,25);
+    position: fixed;
+    bottom: 0;
+    color: goldenrod;
+    text-align: center;
+    text-shadow: 6px 4px 5px darkolivegreen;
 }

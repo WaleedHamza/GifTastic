@@ -91,7 +91,6 @@ $.ajax({
         }
     })
 });
-
   //=========Giphs state handler==================//
 
            $(document).on("click", ".image", function(){
