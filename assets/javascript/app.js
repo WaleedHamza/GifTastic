@@ -1,5 +1,5 @@
 
-var topics = ["Cats", "Dogs", "Funny", "Computers", "Fish"];
+var topics = ["Tactical", "Jeep", "Cars", "Funny", "Dogs"];
 var input = $("#searchInput").val().trim();
 
 //=========Render Buttons ==================//
@@ -8,12 +8,12 @@ function renderButtons(newTopic) {
     // console.log( "I am rendering")
     if (typeof newTopic === "undefined") {
         topics.forEach(function (topic) {
-            $("#buttons").append(`<button data-val=${topic}>${topic}</button>`)
+            $("#buttons").append(`<button class="topicBtn" data-val=${topic}>${topic}</button>`)
         })
     } else { 
         // console.log("this")
       topics.push(newTopic)
-      $("#buttons").append(`<button data-val=${newTopic}>${newTopic}</button>`)
+      $("#buttons").append(`<button class="topicBtn" data-val=${newTopic}>${newTopic}</button>`)
     }
 }
 

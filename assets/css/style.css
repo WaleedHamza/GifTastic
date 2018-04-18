@@ -29,16 +29,33 @@ body {
     padding: 20px;
     margin: 10px auto 0;
     overflow: auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.topicBtn{
+    padding: 5px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.468);
+    border: 1px solid rgba(0, 0, 0, 0.468);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black;
+    transition: 400ms;
+    color:goldenrod;
+}
+
+.topicBtn:hover{
+    box-shadow: 3px -2px 2px -4px goldenrod;
 }
 
 #results {
     width: 80%;
     height: 900%;
-    bottom: 80px;
     background: linear-gradient(to top left, rgb(8, 13, 21),rgb(79, 82, 84))no-repeat center fixed;
+    padding: 90px;
     margin: 0 auto;
-    padding: 20px;
     margin-top: 10px;
+    margin-bottom: 100px;
     text-align: center;
     overflow: hidden;
 
@@ -58,7 +75,6 @@ img {
 }
 
 .image:hover:after {
-    /* content: ''; */
     position: absolute;
     left: 0;
     top: 0;
