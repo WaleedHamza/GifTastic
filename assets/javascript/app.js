@@ -1,109 +1,90 @@
-
 var topics = ["Tactical", "Jeep", "Cars", "Funny", "Dogs"];
+// console.log(topics)
 var input = $("#searchInput").val().trim();
+function displayGifs(){
+    $("#results").empty();
+    console.log('topic', topic)
+    var topic = $(this).attr("data-value");
+    console.log('topic1', topic)
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" 
+    + topic + "&limit=10&rating=r&api_key=dc6zaTOxFJmzC";
+    console.log('query', queryURL)
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        console.log('hello', response)
+        var results = response.data;
+        console.log(results)
+        for (i =0 ; i < results.length ; i++){
+            console.log('in loop')
+            var r = results[i].rating;
+            var gifDiv = $("<div class='grid-item'>");
+            var rating = results[i].rating;
+            var r = $("<p>").text("Rated: " + rating);
+                r.addClass("rated")
+            var f = $("<button>").text("Add to favorites");
+                f.addClass("favBtn")
+            var giphy = $("<img class='image'>");
+                giphy.attr("src", results[i].images.fixed_width_still.url);
+                giphy.attr("data-still",results[i].images.fixed_width_still.url)
+                giphy.attr("data-animate",results[i].images.fixed_width.url)
+                giphy.attr("data-state", "still")
+                gifDiv.prepend(r);
+                gifDiv.prepend(f);
+                gifDiv.prepend(giphy);
+                $("#results").append(gifDiv);
+        }//end of for loop//
+    });
+}        
+function renderButtons() {
+    for (var i = 0; i < topics.length; i++) {
+        $("#buttons").append(
+            `
+            <button class="topicBtn" data-value=${topics[i]}>${topics[i]}</button>
+            `
+        )
+    
+} //end of render button function//
+}console.log(topics)
 
-//=========Render Buttons ==================//
-
-function renderButtons(newTopic) {
-    // console.log( "I am rendering")
-    if (typeof newTopic === "undefined") {
-        topics.forEach(function (topic) {
-            $("#buttons").append(`<button class="topicBtn" data-val=${topic}>${topic}</button>`)
-        })
-    } else { 
-        // console.log("this")
-      topics.push(newTopic)
-      $("#buttons").append(`<button class="topicBtn" data-val=${newTopic}>${newTopic}</button>`)
+$("#addBtn").click(function (event) {
+    console.log('in addButton')
+    event.preventDefault()
+    var newTopic = $("#searchInput").val().trim();
+    // console.log(newTopic)
+  
+    // console.log('newTopic', newTopic)
+    if (!(topics.indexOf(newTopic) > -1)) {
+        topics.push(newTopic);
+        // console.log(input)
+        $("#buttons").append(
+            `
+            <button class="topicBtn" data-value=${newTopic}>${newTopic}</button>
+            `
+        )
     }
-}
-
-$("#search").on("click", function(event){
-  event.preventDefault();
-  $("#results").empty();
-  var formValue = $("#searchInput").val().trim();
-  $("#searchInput").val();
-  if (!(topics.indexOf(formValue) > -1)){
-    // console.log(formValue);
-    renderButtons(formValue);
-  }
+   
 });
+
+
+$(document).on("click", ".topicBtn", displayGifs);
 
 renderButtons();
 
- //=========Error handler ==================//
-
-$("#search").click( function(event){
-  event.preventDefault()
-  input = $("#searchInput").val().trim();
-
-  if ($("#searchInput").val() === ""){
-    alert("Oops! No blank giphies for you!");
-    $("#results").empty();
-    return  null;
-  } 
-
-  if ($("#numOfOutPut").val() <= 0){
-    alert ("Please add the number of Giphs required");
-    $("#results").empty();
-    return  null;
-  }
-  
-  if (!(topics.indexOf(input) > -1)){
-          topics.push(input);
-  }
-  console.log(topics);
- 
-  //=========API queries ==================//
-
-var giphsAmount = $("#numOfOutPut")
-    .val()
-    .trim();
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" 
-                + input + "&limit=" + giphsAmount + 
-                "&rating=r&api_key=dc6zaTOxFJmzC";
-
-$.ajax({
-    url: queryURL, 
-    method: "GET"
-  }).then(function (response) {
-        // console.log(response)
 
 
-        $("#results").empty();
-        var result = response.data;
-        for (var i = 0; i < result.length; i++) {
-            var gifDiv = $("<div class='item'>");
-            var rating = result[i].rating;
-            var r = $("<p>").text("Rated: " + rating);
-            r.addClass("rated")
-            var f = $("<button>").text("Add to favorites");
-            f.addClass("favBtn")
-            var giphy = $("<img>");
-            giphy.attr("src", result[i].images.fixed_width_still.url);
-            giphy.attr("data-still",result[i].images.fixed_width_still.url)
-            giphy.attr("data-animate",result[i].images.fixed_width.url)
-            giphy.attr("data-state", "still")
-            giphy.addClass("image");
-            gifDiv.prepend(r);
-            gifDiv.prepend(f);
-            gifDiv.prepend(giphy);
-            $("#results").prepend(gifDiv);
+
+//================state Handler==================//
+    $(document).on("click", ".image", function(){
+        // console.log( "I have been clicked")
+        var currentState = $(this).attr("data-state");
+        if (currentState === "still"){
+           $(this).attr("src", $(this).attr("data-animate"))
+           $(this).attr("data-state", "animate")
+        }else{
+            $(this).attr("src", $(this).attr("data-still"))
+            $(this).attr("data-state", "still")
         }
-    })
-});
-  //=========Giphs state handler==================//
-
-           $(document).on("click", ".image", function(){
-            // console.log( "I have been clicked")
-            var currentState = $(this).attr("data-state");
-            if (currentState === "still"){
-               $(this).attr("src", $(this).attr("data-animate"))
-               $(this).attr("data-state", "animate")
-            }else{
-                $(this).attr("src", $(this).attr("data-still"))
-                $(this).attr("data-state", "still")
-            }
-
-            })
-
-
+    
+        });
