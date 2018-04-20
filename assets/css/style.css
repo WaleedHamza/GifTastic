@@ -42,6 +42,7 @@ body {
     box-shadow: 5px 5px 5px black;
     transition: 400ms;
     color:white;
+    outline: none !important;
 }
 
 .topicBtn:hover{
@@ -78,7 +79,6 @@ img {
     top: 0;
     bottom: 0;
     width: 100%;
-    background: url("http://i.stack.imgur.com/P1ELC.png") center no-repeat;
     background-size: 50px;
 
 }
@@ -113,6 +113,7 @@ img {
     background-color: rgba(0, 0, 0, 0.468);
     border: 1px solid rgba(0, 0, 0, 0.468);
     border-radius: 10px;
+    outline: none !important;
 }
 .favBtn:hover,
 .rated:hover {
