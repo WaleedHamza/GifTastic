@@ -4,10 +4,6 @@ This web application will allow users to add a topic button and then serach the 
 ![giftastic](https://user-images.githubusercontent.com/33872841/41309762-9ec4b1e0-6e4d-11e8-9ee8-b1445e4a240a.png)
 
 
-![giftastic](https://user-images.githubusercontent.com/33872841/41309645-57303c46-6e4d-11e8-897f-9f128a9c8784.png)
-
-
-
 
 # Functionality
 
